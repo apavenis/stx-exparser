@@ -72,15 +72,15 @@ AC_FUNC_STRTOD
 AC_CHECK_FUNCS([pow sqrt strcasecmp strtol strtoul strtoull])
 
 # Boost Base autoconf check
-AX_BOOST_BASE([1.33.0])
+AX_BOOST_BASE([1.43.0])
 
 # check for Boost.Spirit
-AC_CHECK_HEADER([boost/spirit/core.hpp], [],
+AC_CHECK_HEADER([boost/spirit/home/classic/core.hpp], [],
     AC_MSG_ERROR([
 *** could not find the boost headers ***
 *** install the libboost-dev package (http://www.boost.org) ***]))
 
-AC_CHECK_HEADER([boost/spirit/phoenix.hpp], [],
+AC_CHECK_HEADER([boost/spirit/home/classic/phoenix.hpp], [],
     AC_MSG_ERROR([
 *** could not find the boost headers ***
 *** install the libboost-dev package (http://www.boost.org) ***]))

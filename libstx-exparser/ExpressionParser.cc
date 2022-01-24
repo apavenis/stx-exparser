@@ -27,15 +27,14 @@
 #include "ExpressionParser.h"
 #include <string.h>
 
-#include <boost/spirit/core.hpp>
+#include <boost/spirit/home/classic/core.hpp>
+#include <boost/spirit/home/classic/tree/ast.hpp>
+#include <boost/spirit/home/classic/tree/tree_to_xml.hpp>
 
-#include <boost/spirit/tree/ast.hpp>
-#include <boost/spirit/tree/tree_to_xml.hpp>
-
-#include <boost/spirit/utility/lists.hpp>
-#include <boost/spirit/utility/distinct.hpp>
-#include <boost/spirit/utility/escape_char.hpp>
-#include <boost/spirit/utility/grammar_def.hpp> 
+#include <boost/spirit/home/classic/utility/lists.hpp>
+#include <boost/spirit/home/classic/utility/distinct.hpp>
+#include <boost/spirit/home/classic/utility/escape_char.hpp>
+#include <boost/spirit/home/classic/utility/grammar_def.hpp>
 
 #include <iostream>
 #include <sstream>
@@ -49,7 +48,7 @@ namespace stx {
 /// implementation classes.
 namespace Grammar {
 
-using namespace boost::spirit;
+    using namespace boost::spirit::classic;
 
 /// This enum specifies ids for the parse tree nodes created for each rule.
 enum parser_ids
@@ -1323,9 +1322,9 @@ const ParseTree parseExpression(const std::string &input)
 #endif
 
     Grammar::tree_parse_info<Grammar::InputIterT> info =
-	boost::spirit::ast_parse(input.begin(), input.end(),
-				 g.use_parser<0>(),	// use first entry point: expr
-				 boost::spirit::space_p);
+	boost::spirit::classic::ast_parse(input.begin(), input.end(),
+            g.use_parser<0>(),	// use first entry point: expr
+            boost::spirit::classic::space_p);
 
     if (!info.full)
     {
@@ -1351,9 +1350,9 @@ std::string parseExpressionXML(const std::string &input)
 #endif
 
     Grammar::tree_parse_info<Grammar::InputIterT> info =
-	boost::spirit::ast_parse(input.begin(), input.end(),
+	boost::spirit::classic::ast_parse(input.begin(), input.end(),
 				 g.use_parser<0>(),	// use first entry point: expr
-				 boost::spirit::space_p);
+				 boost::spirit::classic::space_p);
 
     if (!info.full)
     {
@@ -1381,9 +1380,9 @@ ParseTreeList parseExpressionList(const std::string &input)
 #endif
 
     Grammar::tree_parse_info<Grammar::InputIterT> info =
-	boost::spirit::ast_parse(input.begin(), input.end(),
+	boost::spirit::classic::ast_parse(input.begin(), input.end(),
 				 g.use_parser<1>(),	// use second entry point: exprlist
-				 boost::spirit::space_p);
+				 boost::spirit::classic::space_p);
 
     if (!info.full)
     {
