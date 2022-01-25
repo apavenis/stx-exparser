@@ -1,5 +1,7 @@
 # $Id$
 
+ACLOCAL_AMFLAGS = -I m4
+
 SUBDIRS = libstx-exparser testsuite examples wxparserdemo perl-binding
 
 EXTRA_DIST = Doxyfile doxygen.css

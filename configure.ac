@@ -2,14 +2,15 @@
 # $Id$
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.59)
-AC_INIT(stx-exparser, 0.7)
+AC_PREREQ([2.71])
+AC_INIT([stx-exparser],[0.7])
 AC_CONFIG_SRCDIR([libstx-exparser/ExpressionParser.cc])
 AC_CONFIG_AUX_DIR(scripts)
 AC_CANONICAL_HOST
 
 AM_INIT_AUTOMAKE
 AM_MAINTAINER_MODE
+AC_CONFIG_MACRO_DIRS([m4])
 
 # enable full optimization by configure switch
 AC_ARG_ENABLE(optimize,
@@ -53,9 +54,8 @@ fi
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
-AC_PROG_RANLIB
 
-AC_PROG_LIBTOOL
+LT_INIT
 
 AC_LANG([C++])
 
@@ -63,8 +63,6 @@ AC_LANG([C++])
 
 # Checks for header files.
 
-# Checks for typedefs, structures, and compiler characteristics.
-AC_HEADER_STDC
 AC_HEADER_STDBOOL
 AC_C_CONST
 AC_C_INLINE
@@ -86,7 +84,7 @@ AC_CHECK_HEADER([boost/spirit/home/classic/phoenix.hpp], [],
 *** install the libboost-dev package (http://www.boost.org) ***]))
 
 # check whether cppunit is available
-PKG_CHECK_MODULES(CPPUNIT,[cppunit],[have_cppunit=yes],[have_cppunit=no]))
+PKG_CHECK_MODULES(CPPUNIT,[cppunit],[have_cppunit=yes],[have_cppunit=no])
 
 AM_CONDITIONAL(HAVE_CPPUNIT, test x$have_cppunit != xno)
 
