@@ -39,6 +39,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
+#include <memory>
 
 // #define STX_DEBUG_PARSER
 
@@ -1066,8 +1067,8 @@ static ParseNode* build_expr(TreeIterT const& i)
 
 	// auto_ptr needed because of possible parse exceptions in build_expr.
 
-	std::auto_ptr<const ParseNode> left( build_expr(i->children.begin()) );
-	std::auto_ptr<const ParseNode> right( build_expr(i->children.begin()+1) );
+	std::unique_ptr<const ParseNode> left( build_expr(i->children.begin()) );
+	std::unique_ptr<const ParseNode> right( build_expr(i->children.begin()+1) );
 
 	if (left->evaluate_const(NULL) && right->evaluate_const(NULL))
 	{
@@ -1126,8 +1127,8 @@ static ParseNode* build_expr(TreeIterT const& i)
 
 	// we need auto_ptr because of possible parse exceptions in build_expr.
 
-	std::auto_ptr<const ParseNode> left( build_expr(i->children.begin()) );
-	std::auto_ptr<const ParseNode> right( build_expr(i->children.begin()+1) );
+	std::unique_ptr<const ParseNode> left( build_expr(i->children.begin()) );
+	std::unique_ptr<const ParseNode> right( build_expr(i->children.begin()+1) );
 
 	if (left->evaluate_const(NULL) && right->evaluate_const(NULL))
 	{
@@ -1160,15 +1161,15 @@ static ParseNode* build_expr(TreeIterT const& i)
 
 	// auto_ptr needed because of possible parse exceptions in build_expr.
 
-	std::auto_ptr<ParseNode> left( build_expr(i->children.begin()) );
-	std::auto_ptr<ParseNode> right( build_expr(i->children.begin()+1) );
+	std::unique_ptr<ParseNode> left( build_expr(i->children.begin()) );
+	std::unique_ptr<ParseNode> right( build_expr(i->children.begin()+1) );
 
 	bool constleft = left->evaluate_const(NULL);
 	bool constright = right->evaluate_const(NULL);
 
 	// a logical node is constant if one of the two ops is constant. so we
 	// construct a calculation node and check later.
-	std::auto_ptr<PNBinaryLogicExpr> node( new PNBinaryLogicExpr(left.release(), right.release(), logicop) );
+	std::unique_ptr<PNBinaryLogicExpr> node( new PNBinaryLogicExpr(left.release(), right.release(), logicop) );
 
 	if (constleft || constright)
 	{
