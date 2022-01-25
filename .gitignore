@@ -9,7 +9,6 @@
 .libs
 .deps
 Makefile
-Makefile.in
 /config.log
 /config.status
 /libtool
@@ -18,3 +17,5 @@ Makefile.in
 /examples/csvfilter/csvfilter
 /examples/csvtool/csvtool
 /examples/simple/exprcalc
+*.log
+*.trs
