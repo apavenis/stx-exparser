@@ -1,0 +1,43 @@
+================================================
+   stx-exparser 0.7: testsuite/test-suite.log
+================================================
+
+# TOTAL: 1
+# PASS:  0
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+
+.. contents:: :depth: 2
+
+FAIL: testsuite
+===============
+
+AnyScalarTest::test_boolean. : OK
+AnyScalarTest::test_char. : OK
+AnyScalarTest::test_short. : OK
+AnyScalarTest::test_integer. : OK
+AnyScalarTest::test1. : assertionF
+ExpressionParserTest::test1. : errorE
+
+
+
+!!!FAILURES!!!
+Test Results:
+Run:  6   Failures: 1   Errors: 1
+
+
+1) test: AnyScalarTest::test1 (F) line: 185 AnyScalarTest.cc
+assertion failed
+- Expression: t_float.getString() == "42.42"
+
+
+2) test: ExpressionParserTest::test1 (E) 
+uncaught exception of type std::exception (or derived).
+- Syntax error at position 14 near  
+
+
+FAIL testsuite (exit status: 1)
+
