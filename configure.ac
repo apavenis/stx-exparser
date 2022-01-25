@@ -86,9 +86,9 @@ AC_CHECK_HEADER([boost/spirit/home/classic/phoenix.hpp], [],
 *** install the libboost-dev package (http://www.boost.org) ***]))
 
 # check whether cppunit is available
-AM_PATH_CPPUNIT(1.10.0)
+PKG_CHECK_MODULES(CPPUNIT,[cppunit],[have_cppunit=yes],[have_cppunit=no]))
 
-AM_CONDITIONAL(HAVE_CPPUNIT, test x$CPPUNIT_CONFIG != xno)
+AM_CONDITIONAL(HAVE_CPPUNIT, test x$have_cppunit != xno)
 
 if test x$CPPUNIT_CONFIG == xno; then
     AC_MSG_WARN([
