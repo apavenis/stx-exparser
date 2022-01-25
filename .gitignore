@@ -9,6 +9,7 @@
 .libs
 .deps
 Makefile
+Makefile.in
 /config.log
 /config.status
 /libtool
