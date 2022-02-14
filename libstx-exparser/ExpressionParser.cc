@@ -1324,7 +1324,7 @@ const ParseTree parseExpression(const std::string &input)
 
     Grammar::tree_parse_info<Grammar::InputIterT> info =
 	boost::spirit::classic::ast_parse(input.begin(), input.end(),
-            g.use_parser<0>(),	// use first entry point: expr
+            g.use_parser<0>() >> boost::spirit::classic::end_p,  	// use first entry point: expr
             boost::spirit::classic::space_p);
 
     if (!info.full)
