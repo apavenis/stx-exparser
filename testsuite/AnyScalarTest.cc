@@ -180,13 +180,13 @@ protected:
 	CPPUNIT_ASSERT( t_float.getDouble() == 42.0 );
 	CPPUNIT_ASSERT( t_float.getString() == "42" );
 
-	CPPUNIT_ASSERT( t_float.setDouble(42.42) );
+	CPPUNIT_ASSERT( t_float.setDouble(42.25) );
 	CPPUNIT_ASSERT( t_float.getInteger() == 42 );
-	CPPUNIT_ASSERT( t_float.getString() == "42.42" );
+	CPPUNIT_ASSERT( t_float.getString() == "42.25" );
 
-	CPPUNIT_ASSERT( t_float.setString("42.42") );
+	CPPUNIT_ASSERT( t_float.setString("42.25") );
 	CPPUNIT_ASSERT( t_float.getInteger() == 42 );
-	CPPUNIT_ASSERT( t_float.getString() == "42.42" );
+	CPPUNIT_ASSERT( t_float.getString() == "42.25" );
 
 
 	CPPUNIT_ASSERT( t_string.setInteger(20) );
